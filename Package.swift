@@ -14,11 +14,11 @@ let package = Package(
     ],
 	dependencies: [
 		//.package(path: "/Volumes/CodeSSD/GitHub/KivyTexture"),
-		.package(url: "https://github.com/KivySwiftPackages/KivyTexture", .upToNextMajor(from: .init(0, 0, 0))),
+		.package(url: "https://github.com/KivySwiftPackages/KivyTexture", .upToNextMajor(from: .init(311, 0, 0))),
 		.package(url: "https://github.com/KivySwiftLink/PythonSwiftLink", .upToNextMajor(from: .init(311, 1, 0))),
 		.package(url: "https://github.com/KivySwiftLink/PythonCore", .upToNextMajor(from: .init(311, 0, 0))),
 		
-		.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", branch: "development")
+		.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", .upToNextMajor(from: .init(0, 1, 0)))
 	],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
