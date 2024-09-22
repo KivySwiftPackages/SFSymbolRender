@@ -13,7 +13,8 @@ let package = Package(
             targets: ["SFSymbolRender"]),
     ],
 	dependencies: [
-		.package(path: "/Volumes/CodeSSD/GitHub/KivyTexture"),
+		//.package(path: "/Volumes/CodeSSD/GitHub/KivyTexture"),
+		.package(url: "https://github.com/KivySwiftPackages/KivyTexture", .upToNextMajor(from: .init(0, 0, 0))),
 		.package(url: "https://github.com/KivySwiftLink/PythonSwiftLink", .upToNextMajor(from: .init(311, 1, 0))),
 		.package(url: "https://github.com/KivySwiftLink/PythonCore", .upToNextMajor(from: .init(311, 0, 0))),
 		
