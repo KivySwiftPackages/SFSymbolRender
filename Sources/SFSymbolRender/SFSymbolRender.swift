@@ -1,4 +1,5 @@
 import PySwiftCore
+import PySwiftObject
 import PythonCore
 import KivyTexture
 import UIKit
@@ -17,3 +18,4 @@ func sf_symbol(system_name: String, point_size: Double) -> PyPointer {
 	
 }
 
+public let module = PySwiftModuleImport(name: "sf_render", module: PyInit_sf_render)
