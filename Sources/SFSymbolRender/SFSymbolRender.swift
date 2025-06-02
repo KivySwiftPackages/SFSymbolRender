@@ -1,21 +1,33 @@
-import PySwiftCore
+import PySwiftKit
+import PySerializing
 import PySwiftObject
-import PythonCore
+import PyUnpack
+
+import PySwiftWrapper
+
 import KivyTexture
 import UIKit
 
+@PyModule
+struct SfRender: PyModuleProtocol {
+    
+    @PyFunction
+    static func sf_symbol(system_name: String, point_size: Double) -> PyPointer {
+        guard
+            let image = UIImage(
+                systemName: system_name,
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: point_size)
+            )?.withRenderingMode(.alwaysTemplate),
+            let cg = image.cgImage
+        else { return .None }
 
-func sf_symbol(system_name: String, point_size: Double) -> PyPointer {
-	guard
-		let image = UIImage(
-			systemName: system_name,
-			withConfiguration: UIImage.SymbolConfiguration(pointSize: point_size)
-		)?.withRenderingMode(.alwaysTemplate),
-		let cg = image.cgImage
-	else { fatalError() }
-	let tex = KivyTexture(cg: cg)
-	return tex.data
-	
+        return KivyTexture(cg: cg).pyPointer
+        
+    }
+    
+    static var py_classes: [any (PyClassProtocol & AnyObject).Type] = []
 }
 
-public let module = PySwiftModuleImport(name: "sf_render", module: PyInit_sf_render)
+public extension PySwiftModuleImport {
+    static let sf_render = PySwiftModuleImport(name: "sf_render", module: SfRender.py_init)
+}
