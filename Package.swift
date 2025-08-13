@@ -8,7 +8,7 @@ let local = false
 let pykit_package: Package.Dependency = if local {
     .package(path: "../PySwiftKit")
 } else {
-    .package(url: "https://github.com/KivySwiftLink/PySwiftKit", from: .init(311, 0, 0))
+    .package(url: "https://github.com/pv-swift/PySwiftKit", from: .init(311, 0, 0))
 }
 
 let pykit: Target.Dependency = .product(name: "SwiftonizeModules", package: "PySwiftKit")
@@ -21,7 +21,7 @@ let tex_package: Package.Dependency = if local {
 
 let package = Package(
     name: "SFSymbolRender",
-	platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v13), .macOS(.v11)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -32,7 +32,7 @@ let package = Package(
 		//.package(path: "/Volumes/CodeSSD/GitHub/KivyTexture"),
         pykit_package,
         tex_package,
-        .package(path: "PyFileGenerator")
+        .package(url: "https://github.com/py-swift/PyFileGenerator", from: .init(311, 0, 0))
 		//.package(url: "https://github.com/KivySwiftLink/PythonCore", .upToNextMajor(from: .init(311, 0, 0))),
 		
 		//.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", .upToNextMajor(from: .init(0, 1, 0)))

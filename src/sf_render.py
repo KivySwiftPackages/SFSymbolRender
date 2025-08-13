@@ -1,0 +1,3 @@
+from typing import Callable, Protocol
+
+def sf_symbol(system_name: str, point_size: int) -> object: ...
